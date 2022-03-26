@@ -32,16 +32,23 @@ public class DeterminanteMatriz {
                 if(j == colunaExcluir){
                     j++;
                  }
+                 //System.out.println("i "  + i);
+                 //System.out.println("j " + j);
+
                  novaMatriz[i][j] = matrizAnt[i+1][j]; // Mesma linha e a mesma coluna - erro
             }
         }
         return novaMatriz; 
     }
 
+    
     double CalcularDeterminante (int[][] matriz) {
         double determinante = 0;
         int novaLinha = matriz.length - 1;
         int novaColuna = matriz.length -1;
+        
+        System.out.println("Passou por aqui");
+
         for(int j = 0; j < this.colunas; j++) {
             double valor = Math.pow(-1, 0 + j) * matriz[0][j];
             System.out.println("Linhas: " + matriz.length + " Colunas: " + matriz[0].length);
