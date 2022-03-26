@@ -1,17 +1,20 @@
 import java.util.Scanner;
 
 public class DeterminanteMatriz {
+    
     public int linhas;
     public int colunas;
     public int linhaTrava;
     public int[][] matriz;
     private Scanner input = new Scanner(System.in);
 
+    /**
+     * Inserir uma matriz
+     */
     void InserirMatriz() {
-        System.out.println("Digite a quantidade de linhas da matriz: ");
+        System.out.println("Digite a ordem de sua matriz: ");
         this.linhas = input.nextInt();
-        System.out.println("Digite a quantidade de colunas da matriz: ");
-        this.colunas = input.nextInt();
+        this.colunas = linhas;
 
         int[][] matrizAux = new int[this.linhas][this.colunas];
         for (int i = 0; i < this.linhas; i++) {
@@ -23,6 +26,12 @@ public class DeterminanteMatriz {
         matriz = matrizAux;
     }
 
+    /**
+     * Método para mostrar ao usuário uma matriz
+     * @param matrizPrintar Matriz a ser mostrada ao usuário
+     * @param linhas Quantidade de linhas da matriz
+     * @param colunas Quantidade de colunas da matriz
+     */
     void PrintarMatriz(int[][] matrizPrintar, int linhas, int colunas) {
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
@@ -31,7 +40,15 @@ public class DeterminanteMatriz {
             System.out.println();
         }
     }
-
+    /**
+     * Método para criar uma NovaMatriz com a ordem menor que a anterior
+     * @param linhas Quantidade de linhas da matriz nova
+     * @param colunas Quantidade de colunas da matriz nova
+     * @param linhaExcluir 
+     * @param colunaExcluir
+     * @param matrizAnt
+     * @return
+     */
     int[][] NovaMatriz(int linhas, int colunas, int linhaExcluir, int colunaExcluir, int[][] matrizAnt) {
         // Diminuir a ordem da matriz
         // Inserir os dados
@@ -63,6 +80,11 @@ public class DeterminanteMatriz {
     }
 
     double CalcularDeterminante (int[][] matriz, int colunas) {
+        if(matriz.length == 1 && matriz[0].length == 1) {
+            System.out.println("Determinante: " + matriz[0][0]);
+            return matriz[0][0];
+
+        }
         System.out.println("CALCULAR DETERMINANTE MATRIZ RECEBIDA");
         PrintarMatriz(matriz, matriz.length, matriz[0].length);
         double determinante = 0;
