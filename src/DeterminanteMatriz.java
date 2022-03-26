@@ -23,15 +23,16 @@ public class DeterminanteMatriz {
         matriz = matrizAux;
     }
 
-    int[][] NovaMatriz (int linhas, int colunas, int linhaExcluir, int colunaExcluir) {
+    int[][] NovaMatriz (int linhas, int colunas, int linhaExcluir, int colunaExcluir, int[][]matrizAnt) {
         // Diminuir a ordem da matriz
         // Inserir os dados
         int[][] novaMatriz = new int[linhas][colunas]; 
-        for(int i = 0; i < this.linhas; i++) {
-            for(int j = 0; j < this.colunas; j++) {
-                if(i != linhaExcluir && j != colunaExcluir){
-                novaMatriz[i][j] = matriz[i][j]; // Mesma linha e a mesma coluna - erro
-            }
+        for(int i = 0; i < linhas; i++) {
+            for(int j = 0; j < colunas; j++) {
+                if(j == colunaExcluir){
+                    j++;
+                 }
+                 novaMatriz[i][j] = matrizAnt[i+1][j]; // Mesma linha e a mesma coluna - erro
             }
         }
         return novaMatriz; 
@@ -39,9 +40,12 @@ public class DeterminanteMatriz {
 
     double CalcularDeterminante (int[][] matriz) {
         double determinante = 0;
+        int novaLinha = matriz.length - 1;
+        int novaColuna = matriz.length -1;
         for(int j = 0; j < this.colunas; j++) {
             double valor = Math.pow(-1, 0 + j) * matriz[0][j];
-            double newMatriz = CalcularDeterminante(NovaMatriz(matriz.length - 2, matriz[0].length - 2, 0, j));
+            System.out.println("Linhas: " + matriz.length + " Colunas: " + matriz[0].length);
+            double newMatriz = CalcularDeterminante(NovaMatriz(novaLinha, novaColuna, 0, j, matriz));
             valor *= newMatriz;
             determinante += valor;
         }
