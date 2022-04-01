@@ -5,6 +5,5 @@ public class App {
         int[][] matriz;
         matriz = Matriz1.matriz;
         System.out.println("O Valor da Determinante é: " + Matriz1.CalcularDeterminante(matriz, matriz[0].length ));
-       
     }
 }
