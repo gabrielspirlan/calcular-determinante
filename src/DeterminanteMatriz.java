@@ -53,11 +53,6 @@ public class DeterminanteMatriz {
         // Diminuir a ordem da matriz
         // Inserir os dados
         int[][] novaMatriz = new int[linhas][colunas];
-        System.out.println("Linhas: " + linhas + "\n Colunas: " + colunas);
-        System.out.println("Nova Matriz");
-        PrintarMatriz(novaMatriz, linhas, colunas);
-        System.out.println("Matriz Anterior");
-        PrintarMatriz(matrizAnt, linhas + 1, colunas + 1);
         int auxI = 1;
         int auxJ = 0;
         for (int i = 0; i < linhas; i++) {
@@ -68,8 +63,6 @@ public class DeterminanteMatriz {
                 if (auxJ == colunaExcluir) {
                     auxJ++;
                 }
-                System.out.println("i " + i);
-                System.out.println("j " + j);
                 novaMatriz[i][j] = matrizAnt[auxI][auxJ]; // Mesma linha e a mesma coluna - erro
                 auxJ++;
             }
@@ -81,21 +74,15 @@ public class DeterminanteMatriz {
 
     double CalcularDeterminante (int[][] matriz, int colunas) {
         if(matriz.length == 1 && matriz[0].length == 1) {
-            System.out.println("Determinante: " + matriz[0][0]);
             return matriz[0][0];
-
         }
-        System.out.println("CALCULAR DETERMINANTE MATRIZ RECEBIDA");
-        PrintarMatriz(matriz, matriz.length, matriz[0].length);
         double determinante = 0;
         int novaLinha = matriz.length - 1;
         int novaColuna = matriz[0].length - 1;
-        System.out.println("Passou por aqui");
         double newMatriz = 0;
 
         for(int j = 0; j < colunas; j++) {
             double valor = Math.pow(-1, 1 + (j + 1)) * matriz[0][j];
-            System.out.println("Linhas: " + matriz.length + " Colunas: " + matriz[0].length);
             if(matriz.length == 2 && matriz[0].length == 2){
                 if(j == 0){
                     newMatriz = matriz[1][1];
@@ -110,7 +97,7 @@ public class DeterminanteMatriz {
             valor = valor * newMatriz;
             determinante += valor;
         }
-        System.out.println("O valor da determinante é: " + determinante);
+        // System.out.println("O valor da determinante é: " + determinante);
         return determinante;
     }
 }

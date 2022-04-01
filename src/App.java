@@ -4,6 +4,7 @@ public class App {
        Matriz1.InserirMatriz();
         int[][] matriz;
         matriz = Matriz1.matriz;
-       Matriz1.CalcularDeterminante(matriz, matriz[0].length );
+        System.out.println("O Valor da Determinante é: " + Matriz1.CalcularDeterminante(matriz, matriz[0].length ));
+       
     }
 }
