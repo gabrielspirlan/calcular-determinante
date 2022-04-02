@@ -1,11 +1,13 @@
-import java.util.Scanner;
+//import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 public class DeterminanteMatriz {
     
     public int ordem;
     public int linhaTrava;
     public int[][] matriz;
-    private Scanner input = new Scanner(System.in);
+    //private Scanner input = new Scanner(System.in);
 
     /**
      * Inserir uma matriz
@@ -13,10 +15,13 @@ public class DeterminanteMatriz {
      * Esse método realiza a inserção dos valores de uma matriz com a ordem passada pelo usuário
      */
     void InserirMatriz() {
-        System.out.println("Digite a ordem de sua matriz: ");
+        //System.out.println("Digite a ordem de sua matriz: ");
+
+        //Modo com Caixa de diálogo
+        ordem = Integer.parseInt(JOptionPane.showInputDialog("Digite a ordem de sua matriz"));
 
         // Atributo ordem recebe o dado passado pelo usuário
-        this.ordem = input.nextInt();
+        //this.ordem = input.nextInt();
 
         // Cria uma matriz quadrada com a ordem passada pelo usuário
         int[][] matrizAux = new int[this.ordem][this.ordem];
@@ -26,8 +31,9 @@ public class DeterminanteMatriz {
             //For das linhas
             for (int j = 0; j < this.ordem; j++) {
                 //For das colunas
-                System.out.println("Digite o elemento na linha " + (i + 1) + " coluna " + (j + 1));
-                matrizAux[i][j] = input.nextInt(); // Utiliza o atributo matrizAux para realizar a inserção
+                matrizAux[i][j] = Integer.parseInt(JOptionPane.showInputDialog("Digite o elemento na linha " + (i + 1) + " coluna " + (j + 1)));
+                //System.out.println("Digite o elemento na linha " + (i + 1) + " coluna " + (j + 1));
+                //matrizAux[i][j] = input.nextInt(); // Utiliza o atributo matrizAux para realizar a inserção
             }
         }
         matriz = matrizAux; // Atributo matriz a matriz inserida
@@ -38,15 +44,21 @@ public class DeterminanteMatriz {
      * @param matrizPrintar Matriz a ser mostrada ao usuário
      * @param ordem Ordem da Matriz
      */
-    void PrintarMatriz(int[][] matrizPrintar, int ordem) {
+    public void PrintarMatriz(int[][] matrizPrintar, int ordem) {
+        String resultado = "";
         for (int i = 0; i < ordem; i++) {
             // for das linhas da matriz
             for (int j = 0; j < ordem; j++) {
                 // for das colunas da matriz
+                resultado += matrizPrintar[i][j];
+                resultado += "  ";
                 System.out.print(matrizPrintar[i][j] + " ");
             }
+            resultado += "\n";
+
             System.out.println(); // Quebra de linha entre as matrizes
         }
+        JOptionPane.showMessageDialog(null, resultado);
     }
     /**
      * Método para criar uma NovaMatriz com a ordem menor que a anterior e que usa como base
