@@ -10,7 +10,7 @@ public class App {
         int[][] matriz;
         matriz = Matriz1.matriz;  
       
-        //System.out.println("O Valor da Determinante é: " + Matriz1.CalcularDeterminante(matriz, matriz[0].length ));
+        Matriz1.PrintarMatriz(Matriz1.matriz, Matriz1.ordem);
         JOptionPane.showMessageDialog(null, "O Valor da Determinante é: " + Matriz1.CalcularDeterminante(matriz, matriz[0].length));
     }
 }

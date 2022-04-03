@@ -45,7 +45,7 @@ public class DeterminanteMatriz {
      * @param ordem Ordem da Matriz
      */
     public void PrintarMatriz(int[][] matrizPrintar, int ordem) {
-        String resultado = "";
+        String resultado = "Sua matriz é de ordem " + ordem  + " e os elementos são: \n";
         for (int i = 0; i < ordem; i++) {
             // for das linhas da matriz
             for (int j = 0; j < ordem; j++) {
